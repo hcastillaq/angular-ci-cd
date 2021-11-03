@@ -1,10 +1,10 @@
-name: simple ci cd 
+name: simple ci cd
 
 on:
   push:
     branches:
       - main
-  
+
 jobs:
   ci_cd:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
       - name: build
         run: npm run build
       - name: deploy
-        -run: npm install -g netlify-cli
-        -run: cd build/angular-ci-cd
-        -run: netlify deploy --auth ${{ secrets.netlify_token }} --dir .
-      
+        run: |
+          npm install -g netlify-cli
+          cd build/angular-ci-cd
+          netlify deploy --auth ${{ secrets.netlify_token }} --dir .
