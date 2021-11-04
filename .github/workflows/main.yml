@@ -20,7 +20,7 @@ jobs:
       - name: build
         run: npm run build
       - name: deploy
-      - uses: jsmrcaga/action-netlify-deploy@master
+        uses: jsmrcaga/action-netlify-deploy@master
         with:
           build_directory: ./dist/angular-ci-cd
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
