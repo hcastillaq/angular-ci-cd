@@ -21,6 +21,6 @@ jobs:
         run: npm run build
       - name: deploy
         run: |
-          npm install -g netlify-cli
+          npm install -g netlify-cli --force
           cd build/angular-ci-cd
           netlify deploy --auth ${{ secrets.netlify_token }} --dir .
