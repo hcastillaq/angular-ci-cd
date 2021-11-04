@@ -20,7 +20,9 @@ jobs:
       - name: build
         run: npm run build
       - name: deploy
-        run: |
-          npm install -g netlify-cli --force
-          cd dist/angular-ci-cd
-          netlify deploy --auth ${{ secrets.netlify_token }} --dir .
+      - uses: jsmrcaga/action-netlify-deploy@master
+        with:
+          build_directory: ./dist/angular-ci-cd
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
